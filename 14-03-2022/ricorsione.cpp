@@ -101,6 +101,19 @@ int fibonacci_iterativa(int n)
     }
 }
 
+void hanoi(int n, string partenza, string arrivo, string aus)
+{
+
+    if (n == 0)
+    {
+        return;
+    }
+
+    hanoi(n - 1, partenza, aus, arrivo);
+    cout << "Sposto il numero " << n << " dal registro " << partenza << " al registro " << arrivo << endl;
+
+    hanoi(n - 1, aus, arrivo, partenza);
+}
 int main()
 {
     cout << "Successore di 5: " << succ(5) << endl;
@@ -116,4 +129,8 @@ int main()
     cout << "Fibonacci di 7: " << fibonacci(7) << endl;
 
     cout << "Fibonacci iterativa di 8: " << fibonacci_iterativa(8) << endl;
+
+    cout << "\n\n********************************************************\n\n";
+
+    hanoi(5, "Sorgente", "Destinazione", "Ausiliario");
 }
