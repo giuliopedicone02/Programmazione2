@@ -115,5 +115,5 @@ int main()
 
     cout << "Fibonacci di 7: " << fibonacci(7) << endl;
 
-    cout << "Fibonacci iterativa di 7: " << fibonacci_iterativa(7) << endl;
+    cout << "Fibonacci iterativa di 8: " << fibonacci_iterativa(8) << endl;
 }
