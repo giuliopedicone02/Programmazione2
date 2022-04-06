@@ -1,4 +1,4 @@
-# Lezione del 05 aprile 2022
+# Lezione del 04 aprile 2022
 
 ### Implementazione del Merge Sort:
 
