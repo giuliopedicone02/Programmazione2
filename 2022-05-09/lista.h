@@ -24,7 +24,7 @@ public:
 
     bool isEmpty()
     {
-        return head = nullptr;
+        return head == nullptr;
     }
 
     void insert(T val)
