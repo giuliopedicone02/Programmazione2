@@ -21,6 +21,11 @@ public:
         return root == nullptr;
     }
 
+    BSTNode<T> *getRoot()
+    {
+        return this->root;
+    }
+
     void insert(T key)
     {
         if (isEmpty())
@@ -84,6 +89,101 @@ public:
         inOrder(ptr->left);
         visit(ptr);
         inOrder(ptr->right);
+    }
+
+    BSTNode<T> *min()
+    {
+        return min(getRoot());
+    }
+
+    BSTNode<T> *min(BSTNode<T> *from)
+    {
+
+        if (isEmpty())
+        {
+            return NULL;
+        }
+
+        BSTNode<T> *ptr = from;
+
+        while (ptr->left)
+        {
+            ptr = ptr->left;
+        }
+
+        return ptr;
+    }
+
+    BSTNode<T> *max()
+    {
+        return max(getRoot());
+    }
+
+    BSTNode<T> *max(BSTNode<T> *from)
+    {
+
+        if (isEmpty())
+        {
+            return NULL;
+        }
+
+        BSTNode<T> *ptr = from;
+        while (ptr->right)
+        {
+            ptr = ptr->right;
+        }
+
+        return ptr;
+    }
+
+    BSTNode<T> *successor(BSTNode<T> *x)
+    {
+        if (this->isEmpty())
+        {
+            return nullptr;
+        }
+
+        if (x->right)
+        {
+            return this->min(x->right);
+        }
+
+        BSTNode<T> *y = x->parent;
+
+        while (x != nullptr && x == y->right)
+        {
+            x = y;
+            y = y->parent;
+        }
+
+        return y;
+    }
+
+    BSTNode<T> *search(T key)
+    {
+        return search(root, key);
+    }
+
+    BSTNode<T> *search(BSTNode<T> *ptr, T key)
+    {
+        if (ptr == nullptr)
+        {
+            return nullptr;
+        }
+
+        if (ptr->key == key)
+        {
+            return nullptr;
+        }
+
+        if (key <= ptr->key)
+        {
+            return search(ptr->left, key);
+        }
+        else
+        {
+            return search(ptr->right, key);
+        }
     }
 };
 

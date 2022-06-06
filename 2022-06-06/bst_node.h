@@ -34,8 +34,9 @@ public:
         this->right = right;
     }
 
-    BSTNode<T> *getLeft(){
-        return this->left :
+    BSTNode<T> *getLeft()
+    {
+        return this->left;
     }
 
     BSTNode<T> *getRight()
@@ -65,7 +66,7 @@ public:
 
     friend ostream &operator<<(ostream &os, BSTNode<T> &node)
     {
-        os << "BSTNode@ = " << &node << " key = " << node.key << " left = " << node.left << " right = " << node.right;
+        os << "BSTNode@ = " << &node << " key = " << node.key << " left = " << node.left << " right = " << node.right << " parent = " << node.parent;
 
         return os;
     }

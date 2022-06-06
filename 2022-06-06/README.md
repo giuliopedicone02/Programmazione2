@@ -1,106 +1,120 @@
 # Lezione del 06 giugno 2022
-
-## Alberi Binari e Ricerca
-
-Una struttura dati gerarchica che possiede una radice, dei rami e delle foglie (nodi senza figli).
-
-### Proprietà di un nodo
-
-* Arietà: Numero di figli possibili (definisce il grado di ramificazione dell'albero)
-* Figli: Elenco di nodi
-* Parent
-
-Numero di nodi: (2^h)-1 (h = ceil(log2(n)))
-
-### Definizione di albero binario completo
-
-Un albero binario si dice completo se e solo se ha esattamente 2^h nodi, dove h è l'altezza dell'albero.
-
-### Definizione di albero binario bilanciato
-
-Un albero binario si dice bilanciato se la differenza di altezza tra il sottoalbero destro e sinistro è al massimo 1
-
-### BST - Binary Search Tree
-
-Un albero binario di ricerca è un particolare tipo di albero binario
-Ogni nodo u è un oggetto costituito da diversi campi: key, un campo left, right e parent che puntano
-rispettivamente al figlio sinistro, al figlio destro e al padre u.
  
-
-### Metodo di inserimento ricorsivo
-
-
-La procedura ricorsiva deve avere due parametri:
-* Valore da inserire
-* Radice del sottoalbero
+### Ricerca minimo e massimo
 
 ```C++
-
-void insert(T key)
+BSTNode<T> *min()
     {
+
         if (isEmpty())
         {
-            root = new BSTNode<T>(key);
-            return;
+            return NULL;
         }
 
-        insert(root, key);
+        BSTNode<T> *ptr = root;
+        while (ptr->left)
+        {
+            ptr = ptr->left;
+        }
+
+        return ptr;
     }
 
-    void insert(BSTNode<T> *ptr, T key)
+    BSTNode<T> *max()
     {
-        if (ptr == nullptr)
+
+        if (isEmpty())
         {
-            ptr = new BSTNode<T>(key);
-            return;
+            return NULL;
         }
-        if (key <= ptr->key)
+
+        BSTNode<T> *ptr = root;
+        while (ptr->right)
         {
-            insert(ptr->left, key);
+            ptr = ptr->right;
         }
-        else
-        {
-            insert(ptr->right, key);
-        }
+
+        return ptr;
     }
 
 ```
 
-### Metodi di visita di un albero
-
-* Pre-order
-* In-order
-* Post-order
-
-### Visita Pre-Order
-Visito la radice, il sottoalbero sinistro e poi il sottoalbero destro
-
-### Visita In-Order
-
-Visito prima il sottoalbero sinistro, poi il nodo ed infinine il sottoalbero destro
+### Ricerca di un nodo data la chiave
 
 ```C++
-   void visit(BSTNode<T> *ptr)
+  BSTNode<T> *search(BSTNode<T> *ptr, T key)
     {
-        cout << ptr << endl;
-    }
-
-    void inOrder()
-    {
-        inOrder(root);
-    }
-
-    void inOrder(BSTNode<T> *ptr)
-    {
-        if(ptr==nullptr)
+        if (ptr == nullptr)
         {
-            return;
+            return nullptr;
         }
-        
-        inOrder(ptr->left);
-        visit(ptr);
-        inOrder(ptr->right);
+
+        if (ptr->key == key)
+        {
+            return nullptr;
+        }
+
+        if (key <= ptr->key)
+        {
+            return search(ptr->left, key);
+        }
+        else
+        {
+            return search(ptr->right, key);
+        }
     }
+```
+
+### Ricerca di successore e predecessore
+
+```C++
+
+    BSTNode<T> *successor(BSTNode<T> *x)
+    {
+        if (this->isEmpty())
+        {
+            return nullptr;
+        }
+
+        if (x->right)
+        {
+            return this->min(x->right);
+        }
+
+        BSTNode<T> *y = x->parent;
+
+        while (x != nullptr && x == y->right)
+        {
+            x = y;
+            y = y->parent;
+        }
+
+        return y;
+    }
+
+    BSTNode<T> *predecessor(BSTNode<T> *x)
+    {
+        if (this->isEmpty())
+        {
+            return nullptr;
+        }
+
+        if (x->left)
+        {
+            return this->max(x->left);
+        }
+
+        BSTNode<T> *y = x->parent;
+
+        while (x != nullptr && x == y->right)
+        {
+            x = y;
+            y = y->parent;
+        }
+
+        return y;
+    }
+
 ```
 
 ### Visita Post-Order
