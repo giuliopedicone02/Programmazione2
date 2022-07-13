@@ -274,7 +274,7 @@ int main()
 	Gr->addEdge('A', 'I')->addEdge('A', 'B');
 	Gr->addEdge('B', 'I');
 	Gr->addEdge('C', 'E');
-	// Gr->addEdge('D','F')->addEdge('D','G')->addEdge('D','H');
+	// Gr->addEdge('D', 'F')->addEdge('D', 'G')->addEdge('D', 'H');
 	Gr->addEdge('E', 'D')->addEdge('E', 'A');
 	Gr->addEdge('F', 'G')->addEdge('F', 'D');
 	Gr->addEdge('G', 'F');
