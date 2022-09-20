@@ -63,6 +63,16 @@ public:
         std::cout << *node << std::endl;
     }
 
+    void preorder(BSTNode<T> *ptr)
+    {
+        if (ptr == nullptr)
+            return;
+
+        visit(ptr);
+        preorder(ptr->left);
+        preorder(ptr->right);
+    }
+
     void inorder(BSTNode<T> *ptr)
     {
         if (ptr == nullptr)
@@ -73,12 +83,30 @@ public:
         inorder(ptr->right);
     }
 
+    void postorder(BSTNode<T> *ptr)
+    {
+        if (ptr == nullptr)
+            return;
+
+        postorder(ptr->left);
+        postorder(ptr->right);
+        visit(ptr);
+    }
+
     void inorder()
     {
         inorder(root);
     }
 
-    // IMPLEMENTARE PREORDER E POSTORDER
+    void preorder()
+    {
+        preorder(root);
+    }
+
+    void postorder()
+    {
+        postorder(root);
+    }
 
     BSTNode<T> *min()
     {
@@ -110,7 +138,7 @@ public:
     {
         if (isEmpty())
         {
-            throw "Empty BST!";
+            return NULL;
         }
 
         BSTNode<T> *ptr = from;
@@ -120,6 +148,16 @@ public:
         }
 
         return ptr;
+    }
+
+    BSTNode<T> *successor()
+    {
+        return successor(root);
+    }
+
+    BSTNode<T> *predecessor()
+    {
+        return predecessor(root);
     }
 
     BSTNode<T> *successor(BSTNode<T> *x)
@@ -132,7 +170,10 @@ public:
         // 1. x ha un sottoalbero destro
 
         if (x->right)
+        {
+
             return this->min(x->right);
+        }
 
         // 2. x non ha un sottoalbero destro
         // il successore di x è l'antenato più prossimo di x
@@ -149,6 +190,33 @@ public:
         return y;
     }
 
+    BSTNode<T> *predecessor(BSTNode<T> *x)
+    {
+        if (this->isEmpty())
+        {
+            return nullptr;
+        }
+
+        // 1. x ha un sottoalbero sinistro
+
+        if (x->left)
+            return this->max(x->left);
+
+        // 2. x non ha un sottoalbero sinistro
+        // il successore di x è l'antenato più prossimo di x
+        // il cui figlio sinistro è anche un antenato di x
+
+        BSTNode<T> *y = x->parent;
+
+        while (x != nullptr && x == y->left)
+        {
+            x = y;
+            y = y->parent;
+        }
+
+        return y;
+    }
+
     BSTNode<T> *search(T key)
     {
         return search(root, key);
@@ -157,7 +225,11 @@ public:
     BSTNode<T> *search(BSTNode<T> *ptr, T key)
     {
         if (ptr == nullptr)
+        {
+            std::cout << "Non ho trovato " << key << std::endl;
             return nullptr;
+        }
+
         if (ptr->key == key)
             return ptr;
 
@@ -225,6 +297,7 @@ public:
 
     BSTNode<T> *remove(T key)
     {
+        // Caso 1 e 2, viene richiamata l funzione al quale passiamo il nodo e non il valore (chiave)
         if (this->isEmpty())
         {
             return nullptr;

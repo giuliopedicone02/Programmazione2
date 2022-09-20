@@ -1,7 +1,10 @@
 #ifndef DLLIST
 #define DLLIST
 
+#include <iostream>
 #include "dlnode.h"
+
+using namespace std;
 
 template <typename T>
 class DLList
@@ -25,7 +28,7 @@ public:
 
     void insertHead(T val)
     {
-        if (this->isEmpty())
+        if (this->isEmpty()) // Primo elemento della DLList
         {
             head = new DLNode<T>(val);
             tail = head;
@@ -97,6 +100,20 @@ public:
         tail = ptr->prev; // tail->prev
 
         delete ptr;
+    }
+
+    friend ostream &operator<<(ostream &out, const DLList<T> &list)
+    {
+        DLNode<T> *ptr = list.head;
+        while (ptr->getNext() != nullptr)
+        {
+            out << *ptr;
+            ptr = ptr->getNext();
+        }
+
+        out << *ptr;
+
+        return out;
     }
 };
 

@@ -21,7 +21,6 @@ public:
 
     DLNode<T> dequeue()
     {
-
         if (isEmpty())
             return 0;
 
@@ -38,7 +37,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &out, Queue<T> &queue)
     {
-        out << "Queue starting at " << &(queue.head);
+        out << "Queue starting at " << &(queue.head) << "\n";
         DLNode<T> *ptr = queue.head;
         while (ptr)
         {

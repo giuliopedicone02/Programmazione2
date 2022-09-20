@@ -21,7 +21,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &out, const DLNode<T> &node)
     {
-        out << "dlnode@" << &node << " val=" << node.val << " - next=" << node.next << " - prev=" << node.prev;
+        out << "\ndlnode@" << &node << " val=" << node.val << " - next=" << node.next << " - prev=" << node.prev;
         return out;
     }
 };

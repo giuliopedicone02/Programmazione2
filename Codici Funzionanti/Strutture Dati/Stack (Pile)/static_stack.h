@@ -27,18 +27,24 @@ public:
 
     void push(T val)
     {
-        if (top == maxSize - 1)
+        if (top == maxSize - 1) // Superata la dimensione massima consentita
+        {
             return;
+        }
 
-        array[++top] = val;
+        // top++
+        array[++top] = val; // Incrementiamo subito top
     }
 
     T pop()
     {
         if (isEmpty())
+        {
             return -1;
+        }
 
-        return array[top--];
+        return array[top--]; // Eseguiamo array[top] e poi decrementiamo top (top--)
+        // top--;
     }
 
     bool isEmpty()

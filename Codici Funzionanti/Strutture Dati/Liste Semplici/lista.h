@@ -54,7 +54,7 @@ public:
         }
 
         Node<T> *ptr = head;
-        while (ptr->getNext() != nullptr)
+        while (ptr->getNext() != nullptr) // Scorriamo fino a trovare l'ultimo elemento
         {
             ptr = ptr->getNext();
         }

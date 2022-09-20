@@ -14,7 +14,7 @@ void bubbleSort(int vec[], int dim)
     {
         for (int i = c + 1; i < dim; i++)
         {
-            if (vec[i] < vec[c])
+            if (vec[c] > vec[i])
             {
                 swap(vec[c], vec[i]);
             }

@@ -36,7 +36,7 @@ int main()
     std::cout << "Test successore" << std::endl;
 
     std::cout << "Il successore di " << *(bst.getRoot()) << " è " << *(bst.successor(bst.getRoot())) << std::endl;
-    std::cout << "Il successore di " << *(bst.search(40)) << " è " << *(bst.successor(bst.search(21))) << std::endl;
+    std::cout << "Il successore di " << *(bst.search(21)) << " è " << *(bst.successor(bst.search(21))) << std::endl;
 
     std::cout << "SEARCH" << std::endl;
     std::cout << "search(18)" << (bst.search(18) ? "found" : "not found") << std::endl;
@@ -52,5 +52,9 @@ int main()
 
     std::cout << "Cancellazione 40" << std::endl;
     BSTNode<int> *cancellato3 = bst.remove(40);
+    bst.inorder();
+
+    std::cout << "Cancellazione 32" << std::endl;
+    BSTNode<int> *cancellato1 = bst.remove(32);
     bst.inorder();
 }
