@@ -32,5 +32,19 @@ int main()
     BSTNode<int> *aux = bst.search(4);
 
     cout << "Predecessore: " << bst.predecessor(aux) << endl;
-    cout << "Successore: " << bst.successor(aux) << endl;
+    cout << "Successore: " << bst.successor(aux) << endl
+         << endl
+         << endl;
+
+    BSTNode<int> *ptr = bst.getRoot();
+
+    while (ptr->getParent())
+    {
+        cout << "Chiave padre: " << ptr->getKey() << endl;
+    }
+    while (ptr)
+    {
+        cout << ptr->getKey() << endl;
+        ptr = ptr->getRight();
+    }
 }

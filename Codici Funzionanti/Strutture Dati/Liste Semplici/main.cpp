@@ -22,13 +22,18 @@ int main()
     std::cout << lista << std::endl;
     std::cout << listaNonOrdinata << std::endl;
 
-    lista.removeHead();
-    listaNonOrdinata.removeTail();
+    // lista.removeHead();
+    // listaNonOrdinata.removeTail();
 
     std::cout << lista << std::endl;
     std::cout << listaNonOrdinata << std::endl;
 
-    listaNonOrdinata.remove(-19);
+    // listaNonOrdinata.remove(-19);
 
     std::cout << listaNonOrdinata << std::endl;
+
+    // lista.inverti();
+    lista.boo();
+
+    // std::cout << "Lista inversa: " << lista << std::endl;
 }

@@ -25,6 +25,11 @@ public:
         return head == nullptr;
     }
 
+    int getSize()
+    {
+        return size;
+    }
+
     Node<T> *getHead() const { return head; }
 
     void insert(T val)
@@ -116,6 +121,16 @@ public:
         delete temp;
     }
 
+    T getFilm()
+    {
+        Node<T> *temp = head;
+        head = head->next;
+
+        size--;
+
+        return temp->getVal();
+    }
+
     void removeTail()
     {
         if (this->isEmpty())
@@ -171,42 +186,6 @@ public:
         delete cur;
     }
 
-    void inverti()
-    {
-        return inverti(head);
-    }
-
-    /*testa punta alla testa di una lista concatenata*/
-    void inverti(Node<T> *testa)
-    {
-        Node<T> *prev = nullptr;
-        Node<T> *current = testa;
-        Node<T> *next2;
-        while (current != nullptr)
-        {
-            next2 = current->next;
-            current->next = prev;
-            prev = current;
-            current = next2;
-        }
-        testa = prev;
-    }
-
-    void boo()
-    {
-        return boo(head);
-    }
-
-    void boo(Node<T> *testa)
-    {
-        if (testa == nullptr)
-        {
-            return;
-        }
-        boo(testa->next);
-        cout << testa->val << endl;
-        }
-
     friend ostream &operator<<(ostream &out, const List<T> &list)
     {
         if (list.verbose)
@@ -224,7 +203,10 @@ public:
             Node<T> *ptr = list.head;
             while (ptr->getNext() != nullptr)
             {
-                out << *ptr << " -> ";
+
+                out << *ptr << endl
+                    << endl;
+
                 ptr = ptr->getNext();
             }
 
