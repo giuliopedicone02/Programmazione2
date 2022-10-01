@@ -2,7 +2,7 @@
 ![Logo](https://images.squarespace-cdn.com/content/v1/60056c48dfad4a3649200fc0/1613294634908-3HTA3TR74HYYSNEIZSIJ/UniCT-Logo.jpg?format=1000w)
 
 
-# Programmazione 2
+# Programmazione 2 (A.A. 2021-22 Moltisanti M.)
 
 Repository creata a scopo didattico per essere utilizzata come backup dei file creati a lezione.
 
