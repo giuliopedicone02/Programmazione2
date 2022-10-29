@@ -8,6 +8,8 @@ Repository creata a scopo didattico per essere utilizzata come backup dei file c
 
 * **Cartella Lezioni:** Contiene gli appunti presi durante il corso, sono presenti file incompleti e parzialmente incorretti 
 * **Cartella Codici Funzionanti:** Contiene i codici corretti e relativi main funzionanti delle strutture dati implementate durante il corso
+* **Cartella Coding Contest:** Comprende soluzioni personali degli esercizi presenti sul sito [Coding Contest](https://www.dmi.unict.it/faro/coding/index.html).
+Sono presenti file incompleti e parzialmente incorretti.
 * **Cartella Esercitazioni Laboratorio:** Contiene esercizi e prove di esame svolte (soluzioni personali, potrebbero non essere corrette e presentare errori)
 * **Esercitazioni PowerPoint:** Esercizi svolti presenti nelle slides del Professore Ortis (A-L) (soluzioni personali, potrebbero non essere corrette e presentare errori)
 
