@@ -243,6 +243,26 @@ public:
 
     BSTNode<T> *remove(BSTNode<T> *node)
     {
+        if (node == root)
+        {
+            if (node->left == nullptr && node->right)
+            {
+                root = node->right;
+            }
+
+            if (node->left && node->right == nullptr)
+            {
+                root = node->left;
+            }
+
+            if (node->left == nullptr && node->right == nullptr)
+            {
+                root = nullptr;
+            }
+
+            return node;
+        }
+
         // CASO 1
         // il nodo è una foglia
         if (node->left == nullptr && node->right == nullptr)
