@@ -248,19 +248,20 @@ public:
             if (node->left == nullptr && node->right)
             {
                 root = node->right;
+                return node;
             }
 
             if (node->left && node->right == nullptr)
             {
                 root = node->left;
+                return node;
             }
 
             if (node->left == nullptr && node->right == nullptr)
             {
                 root = nullptr;
+                return node;
             }
-
-            return node;
         }
 
         // CASO 1
