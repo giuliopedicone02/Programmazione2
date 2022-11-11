@@ -55,6 +55,6 @@ int main()
     bst.inorder();
 
     std::cout << "Cancellazione 32" << std::endl;
-    BSTNode<int> *cancellato1 = bst.remove(32);
+    BSTNode<int> *cancellato4 = bst.remove(32);
     bst.inorder();
 }
