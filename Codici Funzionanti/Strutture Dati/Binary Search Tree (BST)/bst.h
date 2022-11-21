@@ -241,123 +241,16 @@ public:
         return nullptr;
     }
 
-    /*BSTNode<T> *remove(BSTNode<T> *node)
-    {
-        if (node == root)
-        {
-            if (node->left == nullptr && node->right)
-            {
-                root = node->right;
-                return node;
-            }
-
-            if (node->left && node->right == nullptr)
-            {
-                root = node->left;
-                return node;
-            }
-
-            if (node->left == nullptr && node->right == nullptr)
-            {
-                root = nullptr;
-                return node;
-            }
-        }
-
-        // CASO 1
-        // il nodo è una foglia
-        if (node->left == nullptr && node->right == nullptr)
-        {
-            if (node == node->parent->left)
-                node->parent->left = nullptr;
-            else if (node == node->parent->right)
-                node->parent->right = nullptr;
-
-            return node;
-        }
-
-        // CASO 2
-        // il nodo da eliminare ha solo un figlio destro
-        if (node->left == nullptr && node->right != nullptr)
-        {
-            node->right->parent = node->parent;
-
-            // il nodo da eliminare è figlio sx
-            if (node == node->parent->left)
-            {
-                node->parent->left = node->right;
-            }
-            // il nodo da eliminare è figlio dx
-            else if (node == node->parent->right)
-            {
-                node->parent->right = node->right;
-            }
-            return node;
-        }
-
-        // il nodo da eliminare ha solo un figlio sinistro
-        if (node->left != nullptr && node->right == nullptr)
-        {
-            node->left->parent = node->parent;
-
-            // il nodo da eliminare è figlio sx
-            if (node == node->parent->left)
-            {
-                node->parent->left = node->left;
-            }
-            // il nodo da eliminare è figlio dx
-            else if (node == node->parent->right)
-            {
-                node->parent->right = node->left;
-            }
-            return node;
-        }
-
-        return nullptr;
-    }
-
-    BSTNode<T> *remove(T key)
-    {
-        // Caso 1 e 2, viene richiamata l funzione al quale passiamo il nodo e non il valore (chiave)
-        if (this->isEmpty())
-        {
-            return nullptr;
-        }
-
-        BSTNode<T> *node = this->search(key);
-        if (node == nullptr)
-            return nullptr;
-
-        BSTNode<T> *toDelete = this->remove(node);
-
-        if (toDelete != nullptr)
-            return toDelete;
-
-        // CASO 3
-        // il nodo da eliminare ha due figli
-        // sostituiamo la chiave nel nodo da eliminare con la chiave del suo successore
-        BSTNode<T> *next = this->successor(node);
-        // sostituzione della chiave
-        T swap = node->key;
-        node->key = next->key;
-        next->key = swap;
-
-        // richiamo la procedura di cancellazione (casi 1 e 2) sul successore
-        toDelete = this->remove(next);
-
-        return toDelete;
-    }*/
-
     BSTNode<T> *remove(BSTNode<T> *ptr)
     {
-        // CASO 1 - Il nodo è una radice e non ha figli
+        // CASO 1
         if (ptr == root && !(ptr->left) && !(ptr->right))
         {
             root = nullptr;
             return ptr;
         }
 
-        if (!(ptr->left) && !(ptr->right)) // Il nodo non è una foglia
+        if (!(ptr->left) && !(ptr->right))
         {
             if (ptr == ptr->parent->left)
             {
@@ -371,24 +264,22 @@ public:
             }
         }
 
-        // CASO 2 - Il nodo è una radice ed ha un solo figlio
-        if (ptr == root && ptr->left && !(ptr->right)) // Ha solo un figlio sinistro
+        // CASO 2
+        if (ptr == root && ptr->left && !(ptr->right))
         {
             ptr->left->parent = nullptr;
             root = ptr->left;
             return ptr;
         }
 
-        if (ptr == root && !(ptr->left) && ptr->right) // ha solo un figlio destro
+        if (ptr == root && !(ptr->left) && ptr->right)
         {
             ptr->right->parent = nullptr;
             root = ptr->right;
             return ptr;
         }
 
-        // Caso 3 - Il nodo non è una radice ed ha un solo figlio
-
-        if (ptr->left && !(ptr->right)) // Ha un figlio sinistro
+        if (ptr->left && !(ptr->right))
         {
             ptr->left->parent = ptr->parent;
             if (ptr == ptr->parent->left)
@@ -403,7 +294,7 @@ public:
             }
         }
 
-        if (!(ptr->left) && ptr->right) // Ha un figlio destro
+        if (!(ptr->left) && ptr->right)
         {
             ptr->right->parent = ptr->parent;
             if (ptr == ptr->parent->left)
